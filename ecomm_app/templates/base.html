@@ -5,18 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FashionG</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ==" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    {% block scripts %} {% endblock %}
 </head>
 <body>
     <header>
         <nav>
-            <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/women">Women</a></li>
-            <li><a href="/men">Men</a></li>
-            <li><a href="/accessories">Accessories</a></li>
-            <li><a href="/orders">Orders</a></li>
-            </ul>
+            <div class="ui inverted menu">
+                <a class="active item" href="/">Home</a>
+                <a class="item" href="/women">Women</a>
+                <a class="item" href="/men">Men</a>
+                <a class="item" href="/accessories">Accessories</a>
+                <a class="item" href="/orders">Orders</a>
+            </div>
         </nav>
     </header>
     <section>
@@ -28,5 +31,15 @@
             Subscribe
         </div>
     </footer>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js" integrity="sha512-dqw6X88iGgZlTsONxZK9ePmJEFrmHwpuMrsUChjAw1mRUhUITE5QU9pkcSox+ynfLhL15Sv2al5A0LVyDCmtUw==" crossorigin="anonymous"></script> 
+    <script
+        src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+        crossorigin="anonymous">
+    </script>
+    <script src="semantic/dist/semantic.min.js"></script>
 </body>
+
 </html>
+
