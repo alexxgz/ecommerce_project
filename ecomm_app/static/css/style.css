@@ -1,6 +1,48 @@
+/* Base Page */
+html {
+    height: 100%;
+}
 body {
-    background-color: rgb(237, 225, 196);
+    background-color: rgb(158, 164, 159);
+    color: rgb(0, 0, 0);
 }
 a {
     color: rgb(204, 225, 235);
 }
+#carouselPics {
+    height: 45rem;
+    z-index: -1;
+}
+.header {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+}
+.mainSection {
+    min-height: calc(100vh - 55px);
+  }
+.footer {
+    height: 50px;
+  }
+/* Home Page */
+.featured {
+    text-align: center;
+    padding: 2%;
+}
+.featuredItems {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.articles {
+    text-align: center;
+    padding: 2%;
+}
+.articleContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+

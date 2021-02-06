@@ -16,3 +16,6 @@ def accessories(request):
 
 def orders(request):
     return render(request, 'orders.html')
+
+def account(request):
+    return render(request, 'account.html')
