@@ -8,173 +8,197 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-    <script src="{% static 'js/apps.js'%}"></script>
     <script src="{% static 'js/apps.js'%}" defer></script>
     
     {% block scripts %} {% endblock %}
 </head>
 <body>
+    <div class="mainLogo"><h1 class="baseHOne">FashionG</h1></div>
     <!--Nav Bar-->
     <header class="header">
         <div class="navContainer">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navBar">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="/">FashionG</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/women">Women</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/men">Men</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/accessories">Accessories</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Members
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">Access Your Account</button></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Become A Member</button></li>
-                            </ul>
-                        </li>
-                    </ul>
-                        <div class="float-end"> 
-                            <a class="nav-link" href="/orders"><button type="button" class="btn btn-outline-success btn-lg"><i class="bi bi-cart3"></i></button></a>
-                        </div>
-                    
-                    <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navBar">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="/">FashionG</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/women">Women</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/men">Men</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/accessories">Accessories</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Members
+                                </a>
+                                {% if user.is_authenticated %}
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a href="{% url 'logout' %}"><button class="btn btn-outline-success">Log Out</button></a></li>
+                                </ul>
+                                {% else %}
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal">Access Your Account</button></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Become A Member</button></li>
+                                </ul>
+                                {% endif %}
+                            </li>
+                        </ul>
+                            <div class="float-end"> 
+                                <a class="nav-link" href="/orders"><button type="button" class="btn btn-outline-success btn-lg"><i class="bi bi-cart3"></i></button></a>
+                            </div>
+                        
+                        <form class="d-flex">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+                    </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
         </div>
     </header>
     <section class="mainSection">
-    <!-- Modal For Sign In -->
-    <div>
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Member Access</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <!--Sign in Form-->
-                    <div class="mb-3 row">
-                        <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
-                        <div class="col-sm-10">
-                            <input type="email" class="form-control" id="inputEmail">
+        <!-- Modal For Sign In -->
+        <div>
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <form method="POST" action="{% url 'login' %}">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Member Access</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <!--Sign in Form-->
+                                {% csrf_token %}
+                                {{form.as_p}}
+                                <div class="mb-3 row">
+                                    <label for="inputtext" class="col-sm-2 col-form-label">Username</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="inputUsername">
+                                    </div>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+                                    <div class="col-sm-10">
+                                        <input type="password" class="form-control" id="inputPassword">
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Model Continued-->
+                            <div class="modal-footer">                          
+                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" value="signIn" class="btn btn-outline-success">Sign In</button>
+                                <input type="hidden" name="next" value="{{next}}" />
+                            </div>
                         </div>
                     </div>
-                    <div class="mb-3 row">
-                        <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-                        <div class="col-sm-10">
-                            <input type="password" class="form-control" id="inputPassword">
+                </form>
+            </div>
+        </div>
+        <!-- Modal For Sign Up -->
+        <div>
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <form method="POST" action=""> 
+                    <div class="modal-dialog modal-dialog-scrollable">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="staticBackdropLabel">Become A Member</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <!--Sign Up Form-->
+                            <div class="mb-3 row">
+                                <label for="inputName" class="col-sm-2 col-form-label">First Name</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputtext">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="inputLName" class="col-sm-2 col-form-label">Last Name</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputtext">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="inputUName" class="col-sm-2 col-form-label">Username</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputtext">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="inputCity" class="col-sm-2 col-form-label">City</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputtext">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control" id="inputEmail">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+                                <div class="col-sm-10">
+                                    <input type="password" class="form-control" id="inputPassword">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="confirmPassword" class="col-sm-2 col-form-label">Confirm Password</label>
+                                <div class="col-sm-10">
+                                    <input type="password" class="form-control" id="inputPassword">
+                                </div>
+                            </div>
+                            </div>
+                            <!-- Model continued-->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-outline-success">Sign Up</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <!--Model Continued-->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-outline-success">Sign In</button>
-                </div>
+                </form>
             </div>
         </div>
-    </div>
-    </div>
-    <!-- Modal For Sign Up -->
-    <div>
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Become A Member</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <!--Sign Up Form-->
-                <div class="mb-3 row">
-                    <label for="textEmail" class="col-sm-2 col-form-label">First Name</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputtext">
-                    </div>
-                </div>
-                <div class="mb-3 row">
-                    <label for="textEmail" class="col-sm-2 col-form-label">Last Name</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputtext">
-                    </div>
-                </div>
-                <div class="mb-3 row">
-                    <label for="textEmail" class="col-sm-2 col-form-label">Username</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputtext">
-                    </div>
-                </div>
-                <div class="mb-3 row">
-                    <label for="textEmail" class="col-sm-2 col-form-label">Location</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputtext">
-                    </div>
-                </div>
-                <div class="mb-3 row">
-                    <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail">
-                    </div>
-                </div>
-                <div class="mb-3 row">
-                    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-                    <div class="col-sm-10">
-                        <input type="password" class="form-control" id="inputPassword">
-                    </div>
-                </div>
-                <div class="mb-3 row">
-                    <label for="inputPassword" class="col-sm-2 col-form-label">Confirm Password</label>
-                    <div class="col-sm-10">
-                        <input type="password" class="form-control" id="inputPassword">
-                    </div>
-                </div>
-                </div>
-                <!-- Model continued-->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-outline-success">Sign Up</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
         {% block content %}
         {% endblock %}
     </section>
     <footer class="footer">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">FashionG</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+        <nav id="mainNav" class="navbar navbar-expand-lg navbar-light bg-light">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-link active" aria-current="page" href="">About</a>
-                <a class="nav-link" href="#">Features</a>
-                <a class="nav-link" href="#">Pricing</a>
-                <a class="nav-link" href="#">Disabled</a>
+            <a class="navbar-brand" href="#">FashionG</a>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Find us on</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Instagram</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Twitter</a>
+                    </li>
+                </ul>
+                    <form id="subcribeForm" class="d-flex">
+                        <input class="form-control mr-sm-2" type="email" placeholder="Email" aria-label="Subscribe">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Subscribe</button>
+                    </form>
             </div>
-            </div>
-        </div>
         </nav>
+
     </footer>    
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
