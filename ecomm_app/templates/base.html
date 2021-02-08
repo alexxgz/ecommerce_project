@@ -40,13 +40,14 @@
                                 </a>
                                 {% if user.is_authenticated %}
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a href="{% url 'logout' %}"><button class="btn btn-outline-success">Log Out</button></a></li>
+                                    <li><a href="{% url 'account' %}"><button class="btn btn-outline-dark">Account</button></a></li>
+                                    <li><a href="{% url 'logout' %}"><button class="btn btn-outline-dark">Log Out</button></a></li>
                                 </ul>
                                 {% else %}
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a href="{% url 'login' %}"><button type="button" class="btn btn-outline-success">Access Your Account</button></a></li>
+                                    <li><a href="{% url 'login' %}"><button type="button" class="btn btn-outline-dark">Access Your Account</button></a></li>
                                     <li><hr class="dropdown-divider"></li>
-                                    <li><button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Become A Member</button></li>
+                                    <li><a href="{% url 'signup' %}"><button type="button" class="btn btn-outline-dark">Become A Member</button></a></li>
                                 </ul>
                                 {% endif %}
                             </li>
@@ -65,7 +66,7 @@
         </div>
     </header>
     <section class="mainSection">
- 
+{% comment %}  
         <!-- Modal For Sign Up -->
         <div>
             <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -130,7 +131,7 @@
                     </div>
                 </form>
             </div>
-        </div>
+        </div> {% endcomment %}
         {% block content %}
         {% endblock %}
     </section>

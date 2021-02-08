@@ -56,7 +56,26 @@ a {
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
-.womensPhoto {
-    max-width: 100;
-    height: 2%;
+/* Sign in and sign up Form */
+#loginForm {
+    margin: 5%;
+}
+#signupForm {
+    margin: 5%;
+}
+/* Cart */
+.cartSection {
+    margin: 4%;
+}
+/* Womens Section */
+.womensClothing {
+    padding: 1%;
+}
+/* Mens Section */
+.mensClothing {
+    padding: 1%;
+}
+/* Accessories Section */
+.accessories {
+    padding: 1%;
 }
