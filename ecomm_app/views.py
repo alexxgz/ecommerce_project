@@ -101,3 +101,8 @@ def orders(request):
 
     return render(request, 'cart/orders.html')
 
+
+def checkout(request):
+
+    return render(request, 'cart/checkout.html')
+

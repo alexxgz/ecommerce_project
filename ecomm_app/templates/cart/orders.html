@@ -1,21 +1,39 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<section class="cartSection">
-    <div class="card text-white bg-dark mb-3" style="max-width: 540px;">
-        <div class="row g-0">
-            <div class="col-md-4">
-                <img src="..." alt="...">
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title">Product Name</h5>
-                    <p class="card-text">Product Price</p>
-                    <p class="card-text"><button>Remove Item</button></p>
+<hr>
+    <div class="row" id="checkoutSection">
+		<div class="col-lg-12">
+            <div class="box-element">
+                <a  id="continueShoppingButton" class="btn btn-outline-dark" href="{%url 'home'%}"> Continue Shopping</a>
+                <br>
+                <br>
+                <div class="card text-white bg-dark mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="..." alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Product Name</h5>
+                                <p class="card-text">Product Price</p>
+                                <p class="card-text"><button>Remove Item</button></p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                <br>
+                <table class="table">
+                    <tr>
+                        <th><h5>Items: <strong>1</strong></h5></th>
+                        <th><h5>Total:<strong> $50</strong></h5></th>
+                        <th>
+                            <a  style="float:right; margin:5px;" class="btn btn-success" href="/checkout">Checkout</a>
+                        </th>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>
-</section>
 
 {% endblock %}
