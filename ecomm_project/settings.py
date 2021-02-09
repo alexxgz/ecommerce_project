@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'ecomm_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ecommerce_project',
+        'NAME': 'ecommerce',
     }
 }
 
@@ -124,3 +124,5 @@ STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = '/account/'
 
 LOGOUT_REDIRECT_URL = '/'
+
+AUTH_USER_MODEL = "ecomm_app.Account"

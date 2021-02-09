@@ -3,13 +3,13 @@
 {% block content %}
  
 
-<div id='signupForm' class="card text-center text-white bg-dark">
+{% comment %} <div id='signupForm' class="card text-center text-white bg-dark">
   <div class="card-header">
     Become a Member
   </div>
   <div class="card-body">
     {% if error_message %}
-      <p class="red-text">{{error_message}}</p>
+      <p>{{error_message}}</p>
     {% endif %}
 
     <form method="POST" action="{% url 'signup' %}" >
@@ -20,6 +20,61 @@
   <div class="card-footer text-muted">
     Already a Member? <a href="{% url 'login' %}">Sign In to my Account</a>
   </div>
+</div> {% endcomment %}
+
+
+
+
+
+
+
+
+
+
+
+<div id='loginForm' class="card text-center text-white bg-dark">
+  <div class="card-header">
+    Become A Member
+  </div>
+  <div class="card-body">
+    {% if error_message %}
+      <p>{{error_message}}</p>
+    {% endif %}
+    <form class="px-4 py-3" method="POST" action="{% url 'signup' %}" >
+      {% csrf_token %}
+      <div class="mb-3">
+        <label for="username" class="form-label">First Name</label>
+        <input type="text" name="first_name" class="form-control" id="loginUsername" placeholder="First name">
+      </div>
+      <div class="mb-3">
+        <label for="username" class="form-label">Last Name</label>
+        <input type="text" name="last_name" class="form-control" id="loginUsername" placeholder="Last Name">
+      </div>
+      <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" name="username" class="form-control" id="loginUsername" placeholder="Username">
+      </div>
+      <div class="mb-3">
+        <label for="username" class="form-label">City</label>
+        <input type="text" name="city" class="form-control" id="loginUsername" placeholder="City">
+      </div>
+      <div class="mb-3">
+        <label for="username" class="form-label">Email</label>
+        <input type="email" name="email" class="form-control" id="loginUsername" placeholder="Email">
+      </div>
+      <div class="mb-3">
+        <label for="username" class="form-label">Password</label>
+        <input type="password" name="password1" class="form-control" id="loginUsername" placeholder="Password">
+      </div>
+      <div class="mb-3">
+        <label for="Password" class="form-label">Confirm Password</label>
+        <input type="password" name="password2" class="form-control" id="loginPassword" placeholder="Confirm Password">
+      </div>
+      <button type="submit" class="btn btn-outline-success">Sign in</button>
+    </form>
+    <div class="card-footer text-muted">
+      Already a Member? <a href="{% url 'login' %}">Sign In to my Account</a>
+    </div>
 </div>
 
 {% endblock  %}
