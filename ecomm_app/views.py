@@ -49,9 +49,6 @@ def signup(request):
             confirmPassword = request.POST.get('confirmPassword')
             return redirect('login')
 
-        # account = authenticate(request, first_name=first_name, last_name=last_name, username=username, city=city, email=email, password=password, confirmPassword=confirmPassword)
-
-        # login(request, account)
         else:
             print(form.errors)
             error_message = 'Ivalid sign up - try again!'
@@ -67,17 +64,15 @@ def account(request):
         context = {
             'user': user,
         }
-        return render(request, 'members/account.html')
+        return render(request, 'members/account.html', context)
     else:
         return redirect('registration/signup.html')
 
 
 
 def women(request):
-    context = { 
-        'items': Item.objects.all()
-    }
-    return render(request, 'womens/women.html')
+    context = { 'items': Item.objects.all() }
+    return render(request, 'womens/women.html', context)
 
 
 
@@ -98,11 +93,19 @@ def accessories(request):
 
 
 def orders(request):
+    order_items = OrderItem.objects.all()
+    total = 0
+    for item in order_items:
+        total += item.item.price * item.quantity
+    context = { 
+    'orderItems': order_items,
+    'total': total,
+    }
+    return render(request, 'cart/orders.html', context)
 
-    return render(request, 'cart/orders.html')
+
 
 
 def checkout(request):
-
     return render(request, 'cart/checkout.html')
 

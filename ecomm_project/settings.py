@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 from .secret_settings import *
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -126,3 +127,7 @@ LOGIN_REDIRECT_URL = '/account/'
 LOGOUT_REDIRECT_URL = '/'
 
 AUTH_USER_MODEL = "ecomm_app.Account"
+
+MEDIA_URL = '/images/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')

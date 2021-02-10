@@ -10,16 +10,19 @@
     </div>
     <hr>
     <section class="womensClothing">
+        <h3>Shirts</h3>
         <section class="womensShirts">
-            <h3>Shirts</h3>
+            {% for item in items %}
             <div class="card" style="width: 18rem;">
-                <img src="https://i.guim.co.uk/img/media/d12c46f94bf991c7cbd7dcac96d90472146151c0/0_0_3220_4831/master/3220.jpg?width=445&quality=45&auto=format&fit=max&dpr=2&s=57bc037912fadef2ccdec6cacbb43971" class="card-img-top" alt="...">
+                <img class="thumbnail" src="{{ item.image.url }}">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-outline-success">Go somewhere</a>
+                    <h5 class="card-title">"{{ item.title }}"</h5>
+                    <p class="card-text">${{ item.price }}</p>
+                    <button data-product="{{product.id}}" data-action="add" class="btn btn-outline-success add-btn update-cart">Add to Cart</button>
+                    <a href="#" class="btn btn-outline-secondary">View Item</a>
                 </div>
             </div>
+            {% endfor %}
         </section>
         <hr>
         <section class="womensPants">

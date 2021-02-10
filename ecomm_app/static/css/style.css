@@ -71,6 +71,11 @@ a {
 .womensClothing {
     padding: 1%;
 }
+.womensShirts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;   
+}
 /* Mens Section */
 .mensClothing {
     padding: 1%;

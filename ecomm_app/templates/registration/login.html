@@ -7,9 +7,9 @@
     Access my Account
   </div>
   <div class="card-body">
-      {% if error_message %}
+    {% if error_message %}
       <p>{{error_message}}</p>
-      {% endif %}
+    {% endif %}
     <form class="px-4 py-3" method="POST" action="{% url 'login' %}" >
       {% csrf_token %}
       <div class="mb-3">

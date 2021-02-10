@@ -69,6 +69,14 @@ class Item(models.Model):
             'slug': self.slug
         })
 
+    @property
+    def imageURL(self):
+        try:
+            url = self.image.url
+        except:
+            url = ''
+        return url
+
 
 class OrderItem(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
@@ -82,16 +90,6 @@ class OrderItem(models.Model):
     def get_total_item_price(self):
         return self.quantity * self.item.price
 
-    def get_total_discount_item_price(self):
-        return self.quantity * self.item.discount_price
-
-    def get_amount_saved(self):
-        return self.get_total_item_price() - self.get_total_discount_item_price()
-
-    def get_final_price(self):
-        if self.item.discount_price:
-            return self.get_total_discount_item_price()
-        return self.get_total_item_price()
 
 
 class Order(models.Model):
@@ -123,6 +121,7 @@ class Order(models.Model):
 
 class Address(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True)
     street_address = models.CharField(max_length=100)
     apartment_address = models.CharField(max_length=100)
     country = models.CharField(max_length=100)
