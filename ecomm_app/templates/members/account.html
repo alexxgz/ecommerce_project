@@ -1,14 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<hr>
 <section class="memberAccount">
-    <hr>
-    <h1 class="pageHOne">Profile</h1>
-    <h5 class="card-title">Username : {{ user.username }}</h5>
-    <p class="card-text">First Name : {{ user.first_name }}</p>
-    <p class="card-text">Last Name : {{ user.last_name }}</p>
-    <p class="card-text">Residence : {{ user.city }}</p>
-    <p class="card-text">Email : {{ user.email }}</p>
+        <div class="card text-dark bg light mb-3" style="max-width: 25rem" id="profile_card">
+            <div class="card-header"><h1 class="pageHOne">Profile</h1></div>
+            <div class="card-body">  
+                <h5 class="card-title">Username : {{ user.username }}</h5>
+                <p class="card-text">First Name : {{ user.first_name }}</p>
+                <p class="card-text">Last Name : {{ user.last_name }}</p>
+                <p class="card-text">Residence : {{ user.city }}</p>
+                <p class="card-text">Email : {{ user.email }}</p>
+                <a href='edit_profile/' class="btn btn-outline-secondary">Edit Profile</a>
+            </div>
+        </div>
 </section>
 
     

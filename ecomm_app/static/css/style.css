@@ -63,8 +63,16 @@ a {
 #signupForm {
     margin: 5%;
 }
+/* Account profile */
 .memberAccount {
 text-align: center;
+justify-content: center;
+margin: 1%;
+padding: 1%;
+}
+/* Edit Account */
+.edit_h_one {
+    text-align: center;
 }
 /* Cart */
 .cartSection {
@@ -94,5 +102,4 @@ text-align: center;
 #product_info {
     float: right;
     text-align: center;
-    
 }

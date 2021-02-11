@@ -13,7 +13,13 @@ from .models import Account, Item, OrderItem, Order, Address, Payment, Coupon, R
 
 
 def home(request):
+    items = Item.objects.filter(discount_price=False)
+    context = { 'items': items}
     return render(request, 'home.html')
+
+
+def about(request):
+    return render(request, 'about.html')
 
 
 def loginPage(request):
@@ -31,7 +37,6 @@ def loginPage(request):
             error_message = "Account not found"  
     context = {'error_message': error_message}
     return render(request, 'registration/login.html', context)
-
 
 
 def signup(request):
@@ -55,7 +60,6 @@ def signup(request):
     form = MemberForm()
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
-
 
 
 def account(request):
@@ -82,11 +86,13 @@ def edit_profile(request):
             email = request.POST.get('email')
             password = request.POST.get('password')
             confirmPassword = request.POST.get('confirmPassword')            
-            return redirect('profile')
+            return redirect('login')
 
+        else:
+            print(form.errors)
     form = MemberForm(instance=user)
-    context = {'form': form, 'user': user }
-    return render(request, 'members/edit.html')    
+    context = {'form': form}
+    return render(request, 'members/edit.html', context)  
 
 
 def women(request):
@@ -95,19 +101,16 @@ def women(request):
     return render(request, 'womens/women.html', context)
 
 
-
 def men(request):
     items = Item.objects.filter(department='M')
     context = { 'items': items}
     return render(request, 'mens/men.html', context)
 
 
-
 def accessories(request):
     items = Item.objects.filter(department='A')
     context = { 'items': items}
     return render(request, 'accessories/accessories.html', context)
-
 
 
 def orders(request):
@@ -125,10 +128,12 @@ def orders(request):
     }
     return render(request, 'cart/orders.html', context)
 
+
 def add_orderitem(request, orderitem_id):
     added_item = OrderItem.objects.create(item_id=orderitem_id, user_id=request.user.id)
     added_item.save()
     return redirect('orders')
+
 
 def delete_orderitem(request, orderitem_id):
     removed_from_cart = OrderItem.objects.get(id=orderitem_id).delete()
