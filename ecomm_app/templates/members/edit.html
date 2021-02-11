@@ -1,17 +1,18 @@
-{% extends "base.html" %}
+{% extends 'base.html' %} 
 
 {% block content %}
- 
+<hr>
+<h1 class="edit_h_one">Edit: {{ user.username }}</h1>
 
 <div id='loginForm' class="card text-center text-white bg-dark">
   <div class="card-header">
-    Become A Member
+    Change information
   </div>
   <div class="card-body">
     {% if error_message %}
       <p>{{error_message}}</p>
     {% endif %}
-    <form class="px-4 py-3" method="POST" action="{% url 'signup' %}" >
+    <form class="px-4 py-3" method="POST" action="{% url 'edit_profile' %}" >
       {% csrf_token %}
       <div class="mb-3">
         <label for="username" class="form-label">First Name</label>
@@ -41,12 +42,8 @@
         <label for="Password" class="form-label">Confirm Password</label>
         <input type="password" name="password2" class="form-control" id="loginPassword" placeholder="Confirm Password">
       </div>
-      <button type="submit" class="btn btn-outline-success">Sign in</button>
+      <button type="submit" class="btn btn-outline-success">Edit Account</button>
     </form>
-    <div class="card-footer text-muted">
-      Already a Member? <a href="{% url 'login' %}">Sign In to my Account</a>
-    </div>
-</div>
+</div> 
 
-{% endblock  %}
-
+{% endblock %}

@@ -63,6 +63,9 @@ a {
 #signupForm {
     margin: 5%;
 }
+.memberAccount {
+text-align: center;
+}
 /* Cart */
 .cartSection {
     margin: 4%;
@@ -74,7 +77,7 @@ a {
 .womensShirts {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;   
+    justify-content: flex-start;   
 }
 /* Mens Section */
 .mensClothing {
@@ -87,4 +90,9 @@ a {
 /* Checkout page */
 #checkoutSection {
     margin: 2%;
+}
+#product_info {
+    float: right;
+    text-align: center;
+    
 }

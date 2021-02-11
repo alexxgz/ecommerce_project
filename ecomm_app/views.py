@@ -69,41 +69,70 @@ def account(request):
         return redirect('registration/signup.html')
 
 
+def edit_profile(request):
+    user=request.user
+    if request.method == 'POST':
+        form = MemberForm(request.POST, instance=user)
+        if form.is_valid():
+            account = form.save()
+            first_name = request.POST.get('first_name')
+            last_name = request.POST.get('last_name')
+            username = request.POST.get('username')
+            city = request.POST.get('city')
+            email = request.POST.get('email')
+            password = request.POST.get('password')
+            confirmPassword = request.POST.get('confirmPassword')            
+            return redirect('profile')
+
+    form = MemberForm(instance=user)
+    context = {'form': form, 'user': user }
+    return render(request, 'members/edit.html')    
+
 
 def women(request):
-    context = { 'items': Item.objects.all() }
+    items = Item.objects.filter(department='W')
+    context = { 'items': items}
     return render(request, 'womens/women.html', context)
 
 
 
 def men(request):
-    context = { 
-        'items': Item.objects.all()
-    }
-    return render(request, 'mens/men.html')
+    items = Item.objects.filter(department='M')
+    context = { 'items': items}
+    return render(request, 'mens/men.html', context)
 
 
 
 def accessories(request):
-    context = { 
-    'items': Item.objects.all()
-    }
-    return render(request, 'accessories/accessories.html')
+    items = Item.objects.filter(department='A')
+    context = { 'items': items}
+    return render(request, 'accessories/accessories.html', context)
 
 
 
 def orders(request):
     order_items = OrderItem.objects.all()
     total = 0
+    total_items = 0
     for item in order_items:
         total += item.item.price * item.quantity
+    for quantity in order_items:
+        total_items += item.quantity
     context = { 
     'orderItems': order_items,
     'total': total,
+    'total_items': total_items,
     }
     return render(request, 'cart/orders.html', context)
 
+def add_orderitem(request, orderitem_id):
+    added_item = OrderItem.objects.create(item_id=orderitem_id, user_id=request.user.id)
+    added_item.save()
+    return redirect('orders')
 
+def delete_orderitem(request, orderitem_id):
+    removed_from_cart = OrderItem.objects.get(id=orderitem_id).delete()
+    return redirect('orders')
 
 
 def checkout(request):

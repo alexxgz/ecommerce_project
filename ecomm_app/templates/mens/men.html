@@ -11,40 +11,19 @@
     <hr>
     <section class="mensClothing">
         <section class="mensShirts">
-            <h3>Shirts</h3>
+            {% for item in items %}
             <div class="card" style="width: 18rem;">
-                <img src="https://mediaslide-europe.storage.googleapis.com/brooks/pictures/322/3498/large-1547813516-241a6ab37ba9a7a1b40913bad35c4986.jpg" class="card-img-top" alt="...">
+                <img class="thumbnail" src="{{ item.image.url }}">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-outline-success">Go somewhere</a>
+                    <h5 class="card-title">"{{ item.title }}"</h5>
+                    <p class="card-text">${{ item.price }}</p>
+                    <a href="/orders/add_orderitem/{{ item.id }}" class="btn btn-outline-success add-btn update-cart">Add to Cart</a>
+                    <a href="{{ item.image.url }}" class="btn btn-outline-secondary">View Item</a>
                 </div>
             </div>
+            {% endfor %}
         </section>
         <hr>
-        <section class="mensPants">
-            <h3>Pants</h3>
-            <div class="card" style="width: 18rem;">
-                <img src="https://mediaslide-europe.storage.googleapis.com/brooks/pictures/322/3498/large-1547813516-241a6ab37ba9a7a1b40913bad35c4986.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-outline-success">Go somewhere</a>
-                </div>
-            </div>
-        </section>
-        <hr>
-        <section class="mensCoats">
-            <h3>Coats</h3>
-            <div class="card" style="width: 18rem;">
-                <img src="https://mediaslide-europe.storage.googleapis.com/brooks/pictures/322/3498/large-1547813516-241a6ab37ba9a7a1b40913bad35c4986.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-outline-success">Go somewhere</a>
-                </div>
-            </div>
-        </section>
     </section>
 </section>
 
