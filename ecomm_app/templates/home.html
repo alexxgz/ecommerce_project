@@ -40,14 +40,16 @@
         <a href="#" class="btn btn-outline-success">Go somewhere</a>
     </div>
 </div>
+{% for item in items %} 
 <div class="card" style="width: 18rem;">
-    <img src="http://31.media.tumblr.com/680b274440ddb2391b16bd03aba035d1/tumblr_mp7vggO9xK1rn48sdo1_500.jpg" class="card-img-top" alt="...">
+    <img class="thumbnail" src="{{ item.image.url }}">
     <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-outline-success">Go somewhere</a>
+        <h5 class="card-title">{{ item.title }}</h5>
+        <p class="card-text">${{ item.discount_price }}</p>
+        <a href="{{ item.image.url }}" class="btn btn-outline-success">Go somewhere</a>
     </div>
 </div>
+{% endfor %}
 </section>
 
 <hr>

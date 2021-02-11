@@ -15,7 +15,7 @@ from .models import Account, Item, OrderItem, Order, Address, Payment, Coupon, R
 def home(request):
     items = Item.objects.filter(discount_price=False)
     context = { 'items': items}
-    return render(request, 'home.html')
+    return render(request, 'home.html', context)
 
 
 def about(request):
@@ -141,5 +141,17 @@ def delete_orderitem(request, orderitem_id):
 
 
 def checkout(request):
-    return render(request, 'cart/checkout.html')
+    order_items = OrderItem.objects.all()
+    total = 0
+    total_items = 0
+    for item in order_items:
+        total += item.item.price * item.quantity
+    for quantity in order_items:
+        total_items += item.quantity
+    context = { 
+    'orderItems': order_items,
+    'total': total,
+    'total_items': total_items,
+    }
+    return render(request, 'cart/checkout.html', context)
 
