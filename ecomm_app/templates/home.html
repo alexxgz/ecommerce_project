@@ -46,7 +46,8 @@
     <div class="card-body">
         <h5 class="card-title">{{ item.title }}</h5>
         <p class="card-text">${{ item.discount_price }}</p>
-        <a href="{{ item.image.url }}" class="btn btn-outline-success">Go somewhere</a>
+        <a href="{{ item.image.url }}" class="btn btn-outline-secondary">View Product</a>
+        <a href="/orders/add_orderitem/{{ item.id }}" class="btn btn-outline-success add-btn update-cart">Add to Cart</a>
     </div>
 </div>
 {% endfor %}

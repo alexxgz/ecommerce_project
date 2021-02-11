@@ -56,6 +56,10 @@ a {
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
+.about_h_one {
+    display: flex;
+    justify-content: center;
+}
 /* Sign in and sign up Form */
 #loginForm {
     margin: 5%;

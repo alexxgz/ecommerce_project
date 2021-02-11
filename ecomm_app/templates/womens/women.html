@@ -18,7 +18,6 @@
                     <h5 class="card-title">{{ item.title }}</h5>
                     {% if item.discount_price != Null %}                    
                     <p class="card-text">On Sale!</p>
-                    <p class="card-text">Original Price: ${{ item.price }}</p>
                     <p class="card-text">New Price: ${{ item.discount_price }}</p>
                     {% else %}
                     <p class="card-text">${{ item.price }}</p>
@@ -41,4 +40,8 @@
     </section>
 </section>
 
+
 {% endblock %}
+
+
+

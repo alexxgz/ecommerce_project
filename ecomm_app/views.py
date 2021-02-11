@@ -13,7 +13,7 @@ from .models import Account, Item, OrderItem, Order, Address, Payment, Coupon, R
 
 
 def home(request):
-    items = Item.objects.filter(discount_price=False)
+    items = Item.objects.exclude(discount_price=None)
     context = { 'items': items}
     return render(request, 'home.html', context)
 
@@ -86,7 +86,7 @@ def edit_profile(request):
             email = request.POST.get('email')
             password = request.POST.get('password')
             confirmPassword = request.POST.get('confirmPassword')            
-            return redirect('login')
+            return redirect('account')
 
         else:
             print(form.errors)
@@ -154,4 +154,3 @@ def checkout(request):
     'total_items': total_items,
     }
     return render(request, 'cart/checkout.html', context)
-
