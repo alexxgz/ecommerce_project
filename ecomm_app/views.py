@@ -62,7 +62,7 @@ def signup(request):
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
 
-
+@login_required
 def account(request):
     user=request.user
     if request.user.is_authenticated:
@@ -72,10 +72,11 @@ def account(request):
     else:
         return redirect('registration/signup.html')
 
-
+@login_required
 def edit_profile(request):
-    user=request.user
-    if request.method == 'POST':
+    error_message=""
+    user = request.user
+    if request.method == "POST":
         form = MemberForm(request.POST, instance=user)
         if form.is_valid():
             account = form.save()
@@ -85,15 +86,15 @@ def edit_profile(request):
             city = request.POST.get('city')
             email = request.POST.get('email')
             password = request.POST.get('password')
-            confirmPassword = request.POST.get('confirmPassword')            
-            return redirect('account')
-
+            confirmPassword = request.POST.get('confirmPassword')
+            return redirect('login')           
         else:
             print(form.errors)
-            error_message = 'Ivalid Edit'
-        form = MemberForm(instance=user)
+            error_message = 'Invalid Edit'
+    form = MemberForm(instance=user)
     context = {'form': form, 'error_message': error_message}
-    return render(request, 'members/edit.html', context)  
+    return render(request, 'members/edit.html')  
+
 
 
 def women(request):
@@ -113,7 +114,7 @@ def accessories(request):
     context = { 'items': items}
     return render(request, 'accessories/accessories.html', context)
 
-
+@login_required
 def orders(request):
     order_items = OrderItem.objects.all()
     total = 0
@@ -140,7 +141,7 @@ def delete_orderitem(request, orderitem_id):
     removed_from_cart = OrderItem.objects.get(id=orderitem_id).delete()
     return redirect('orders')
 
-
+@login_required
 def checkout(request):
     order_items = OrderItem.objects.all()
     total = 0

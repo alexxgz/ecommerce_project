@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
 
 <section class="womensSection">
     <div class="womensPhoto">
-        <img src="https://shortpresents.com/wp-content/uploads/2017/03/Rachel_Sin-TW17_Che_Rosales-LARAWAN-4354-1080x719.jpg" class="rounded mx-auto d-block" alt="">
+        <img src="{% static 'images/Womens_section.jpg' %}" class="rounded mx-auto d-block" alt="">
     </div>
     <div>
         <h1 class="pageHOne">Women</h1>
@@ -31,8 +32,12 @@
                         <option>Large</option>
                     </select>
                     <hr>
-                    <a href="/orders/add_orderitem/{{ item.id }}" class="btn btn-outline-success add-btn update-cart">Add to Cart</a>
                     <a href="{{ item.image.url }}" class="btn btn-outline-secondary">View Item</a>
+                    {% if user.is_authenticated %}
+                    <a href="/orders/add_orderitem/{{ item.id }}" class="btn btn-outline-success add-btn update-cart">Add to Cart</a>
+                    {% else %}
+                    <a href="{% url 'login' %}" class="btn btn-outline-success add-btn">Sign In to buy</a>
+                    {% endif %}
                 </div>
             </div>
             {% endfor %}

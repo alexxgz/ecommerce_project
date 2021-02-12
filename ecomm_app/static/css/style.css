@@ -102,6 +102,7 @@ padding: 1%;
 
 /* Womens Section */
 .womensClothing {
+    text-align: center;
     padding: 1%;
 }
 .all_women {
@@ -112,6 +113,7 @@ padding: 1%;
 
 /* Mens Section */
 .mensClothing {
+    text-align: center;
     padding: 1%;
 }
 .all_men {
@@ -122,6 +124,7 @@ padding: 1%;
 
 /* Accessories Section */
 .accessories {
+    text-align: center;
     padding: 1%;
 }
 .all_access {

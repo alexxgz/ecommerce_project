@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
+{% load static %} 
 {% block content %}
 
 <section class="accessories_section">
     <div class="all_accessories">
-        <img src="https://www.apropos-store.com/files/my_files/pic/stores/cologne/gucci-store/apropos-koeln-gucci-header-neu.jpg" class="rounded mx-auto d-block" alt="">
+        <img src="{% static 'images/Accessories_section.jpg' %}" class="rounded mx-auto d-block" alt="">
     </div>
     <div>
         <h1 class="pageHOne">Accessories</h1>
@@ -24,8 +25,12 @@
                     <p class="card-text">${{ item.price }}</p>
                     {% endif %}
                     <hr>
-                    <a href="/orders/add_orderitem/{{ item.id }}" class="btn btn-outline-success add-btn update-cart">Add to Cart</a>
                     <a href="{{ item.image.url }}" class="btn btn-outline-secondary">View Item</a>
+                    {% if user.is_authenticated %}
+                    <a href="/orders/add_orderitem/{{ item.id }}" class="btn btn-outline-success add-btn update-cart">Add to Cart</a>
+                    {% else %}
+                    <a href="{% url 'login' %}" class="btn btn-outline-success add-btn">Sign In to buy</a>
+                    {% endif %}
                 </div>
             </div>
             {% endfor %}

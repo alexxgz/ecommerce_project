@@ -3,4 +3,11 @@
 
 ## User Story 
 
- Users will ba able to browse through the site, see what they like and add it to to their cart for checkout or become a member and make a wishlist to buy things later. They will also be able to find the latest news on whats going on in the fashion industry through our blog.
+ Users will ba able to browse through the site and look at products, but in order to buy from the store and get full features they will need to become a member. 
+
+ Once users become members they will be redirected to their profile page where they will be able to see their information, edit their information and view products purchased.
+
+ Articles with links about whats going on in the fashion industry are also integrated into the app 
+
+
+<img src="{% static 'images/site_layout.png'}">
