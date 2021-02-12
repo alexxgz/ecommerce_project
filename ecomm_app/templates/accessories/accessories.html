@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<section class="mensSection">
-    <div class="mensPhoto">
+<section class="accessories_section">
+    <div class="all_accessories">
         <img src="https://www.apropos-store.com/files/my_files/pic/stores/cologne/gucci-store/apropos-koeln-gucci-header-neu.jpg" class="rounded mx-auto d-block" alt="">
     </div>
     <div>
@@ -16,6 +16,7 @@
                 <img class="thumbnail" src="{{ item.image.url }}">
                 <div class="card-body">
                     <h5 class="card-title">{{ item.title }}</h5>
+                    <p class="card-text">{{item.description}}</p>
                     {% if item.discount_price != Null %}                    
                     <p class="card-text">On Sale!</p>
                     <p class="card-text">New Price: ${{ item.discount_price }}</p>

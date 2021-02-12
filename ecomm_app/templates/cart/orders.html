@@ -6,9 +6,9 @@
 		<div class="col-lg-12">
             <div class="box-element">
                 <table class="table">
-                    <tr>
-                        <th><h5>Total Items: <strong>{{total_items}}</strong></h5></th>
-                        <th><h5>Total Price: $<strong>{{total}}</strong></h5></th>
+                    <tr class="cart_table">
+                        <th><h5 class="cart_quantity">Total Items: <strong>{{total_items}}</strong></h5></th>
+                        <th><h5 class="cart_price">Total Price: $<strong>{{total}}</strong></h5></th>
                         <th>
                             <a  style="float:right; margin:5px;" class="btn btn-success" href="/checkout">Checkout</a>
                         </th>
@@ -28,8 +28,6 @@
                                 <h2 class="card-title">{{item.item.title}}</h2>
                                 <hr>
                                 <h3 class="card-text">Price: ${{item.item.price}}</h3>
-                                <hr>
-                                <h3 class="card-text">Size: {{item.item.label}}</h3>
                                 <hr>
                                 <h3 class="card-text">Quantity: {{item.quantity}}</h3>
                                 <hr>

@@ -52,10 +52,9 @@
                                 {% endif %}
                             </li>
                         </ul>
-                            <div class="float-end"> 
-                                <a class="nav-link" href="/orders"><button type="button" class="btn btn-outline-success btn-lg"><i class="bi bi-cart3"></i></button></a>
-                            </div>
-                        
+                        <div class="float-end"> 
+                            <a class="nav-link" href="/orders"><button type="button" class="btn btn-outline-success btn-lg"><i class="bi bi-cart3"></i></button></a>
+                        </div>
                         {% comment %} <form class="d-flex">
                             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                             <button class="btn btn-outline-success" type="submit">Search</button>
@@ -66,12 +65,11 @@
         </div>
     </header>
     <section class="mainSection">
-
         {% block content %}
         {% endblock %}
     </section>
     <footer class="footer">
-        <nav id="mainNav" class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -90,14 +88,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="https://twitter.com">Twitter</a>
                     </li>
+                    <li class="nav-item" id="copyright_info">
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">&copy; 2019-2021 AG</a>
+                    </li>
                 </ul>
-                    {% comment %} <form id="subcribeForm" class="d-flex">
-                        <input class="form-control mr-sm-2" type="email" placeholder="Email" aria-label="Subscribe">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Subscribe</button>
-                    </form> {% endcomment %}
             </div>
         </nav>
-
     </footer>    
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

@@ -23,7 +23,7 @@ def about(request):
 
 
 def loginPage(request):
-    error_message = ""
+    error_message = "Account not found"
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -34,6 +34,7 @@ def loginPage(request):
             login(request, user)
             return redirect('account')  
         else:
+            print(error_message)
             error_message = "Account not found"  
     context = {'error_message': error_message}
     return render(request, 'registration/login.html', context)
@@ -65,9 +66,8 @@ def signup(request):
 def account(request):
     user=request.user
     if request.user.is_authenticated:
-        context = {
-            'user': user,
-        }
+        items = OrderItem.objects.filter(ordered=True)
+        context = {'user': user, 'items': items}
         return render(request, 'members/account.html', context)
     else:
         return redirect('registration/signup.html')
@@ -90,8 +90,9 @@ def edit_profile(request):
 
         else:
             print(form.errors)
-    form = MemberForm(instance=user)
-    context = {'form': form}
+            error_message = 'Ivalid Edit'
+        form = MemberForm(instance=user)
+    context = {'form': form, 'error_message': error_message}
     return render(request, 'members/edit.html', context)  
 
 

@@ -3,7 +3,7 @@ html {
     height: 100%;
 }
 body {
-    background-color: rgb(158, 164, 159);
+    background-color: rgb(220, 222, 221);
     color: rgb(0, 0, 0);
 }
 a {
@@ -33,10 +33,16 @@ a {
 .footer {
     height: 50px;
   }
+.footer_content {
+    display: flex;
+    justify-content: center;
+}
+
 /* All Pages  */
 .pageHOne {
     text-align: center;
 }
+
 /* Home Page */
 .featured {
     text-align: center;
@@ -46,6 +52,9 @@ a {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+}
+#featured_card_body {
+    text-align: center;
 }
 .articles {
     text-align: center;
@@ -60,6 +69,7 @@ a {
     display: flex;
     justify-content: center;
 }
+
 /* Sign in and sign up Form */
 #loginForm {
     margin: 5%;
@@ -67,6 +77,7 @@ a {
 #signupForm {
     margin: 5%;
 }
+
 /* Account profile */
 .memberAccount {
 text-align: center;
@@ -74,36 +85,59 @@ justify-content: center;
 margin: 1%;
 padding: 1%;
 }
+#profile_card {
+    width: 100%;
+}
+.ordered_items {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 1%;
+}
+
 /* Edit Account */
 .edit_h_one {
     text-align: center;
 }
-/* Cart */
-.cartSection {
-    margin: 4%;
-}
+
 /* Womens Section */
 .womensClothing {
     padding: 1%;
 }
-.womensShirts {
+.all_women {
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;   
+    justify-content: space-evenly;   
 }
+
 /* Mens Section */
 .mensClothing {
     padding: 1%;
 }
+.all_men {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;   
+}
+
 /* Accessories Section */
 .accessories {
     padding: 1%;
 }
-/* Checkout page */
+.all_access {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;   
+}
+
+/* Cart orders page */
 #checkoutSection {
     margin: 2%;
 }
 #product_info {
-    float: right;
+    justify-content: center;
     text-align: center;
+}
+.cart_table {
+    float: right;
 }

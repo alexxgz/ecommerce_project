@@ -24,27 +24,13 @@
 
 <h2 class="featured">Featured</h2>
 <section class="featuredItems">
-<div class="card" style="width: 18rem;">
-    <img src="https://i.guim.co.uk/img/media/d12c46f94bf991c7cbd7dcac96d90472146151c0/0_0_3220_4831/master/3220.jpg?width=445&quality=45&auto=format&fit=max&dpr=2&s=57bc037912fadef2ccdec6cacbb43971" class="card-img-top" alt="...">
-    <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-outline-success">Go somewhere</a>
-    </div>
-</div>
-<div class="card" style="width: 18rem;">
-    <img src="https://mediaslide-europe.storage.googleapis.com/brooks/pictures/322/3498/large-1547813516-241a6ab37ba9a7a1b40913bad35c4986.jpg" class="card-img-top" alt="...">
-    <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-outline-success">Go somewhere</a>
-    </div>
-</div>
 {% for item in items %} 
 <div class="card" style="width: 18rem;">
     <img class="thumbnail" src="{{ item.image.url }}">
-    <div class="card-body">
+    <div class="card-body" id="featured_card_body">
         <h5 class="card-title">{{ item.title }}</h5>
+        <p class="card-text">{{item.description}}</p>
+        <p class="card-text">On Sale!</p>
         <p class="card-text">${{ item.discount_price }}</p>
         <a href="{{ item.image.url }}" class="btn btn-outline-secondary">View Product</a>
         <a href="/orders/add_orderitem/{{ item.id }}" class="btn btn-outline-success add-btn update-cart">Add to Cart</a>
@@ -57,18 +43,18 @@
 <h2 class="articles">Articles</h2>
     <div class="articleContainer">
         <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
-            <div class="card-header">Header</div>
+            <div class="card-header">Steet Style Trend Tracking</div>
             <div class="card-body">
-                <h5 class="card-title">Dark card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <h5 class="card-title">Making a case for utility fashion amid the pandemic</h5>
+                <a href="https://www.vogue.com/article/utility-street-style-trends-fall-2021">Read More!</a>
             </div>
         </div>
 
         <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
-            <div class="card-header">Header</div>
+            <div class="card-header">Spring 2021 Couture Show In Paris</div>
             <div class="card-body">
-                <h5 class="card-title">Dark card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <h5 class="card-title">Best of street style at the Couture Show</h5>
+                <a href="https://www.vogue.com/slideshow/spring-2021-couture-paris-street-style">Read More!</a>
             </div>
         </div>
 
