@@ -8,6 +8,3 @@
  Once users become members they will be redirected to their profile page where they will be able to see their information, edit their information and view products purchased.
 
  Articles with links about whats going on in the fashion industry are also integrated into the app 
-
-
-<img src="{% static 'images/site_layout.png'}">
