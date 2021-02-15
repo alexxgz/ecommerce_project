@@ -2,7 +2,7 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=django,python,venv,vscode
 
 #### Own gitignore for secret ####
-secret_settings.py
+.env
 
 
 
