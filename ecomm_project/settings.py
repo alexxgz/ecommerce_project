@@ -17,7 +17,7 @@ import django_on_heroku
 # s3 = S3Connection(os.environ['SECRET_KEY'])
 
 import environ 
-env = environ.Env()
+env = environ.Env(DEBUG=(bool, False))
 environ.Env.read_env()
 
 
